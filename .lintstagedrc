@@ -1,0 +1,13 @@
+{
+	"*.{ts}": [
+		"jest --passWithNoTests --findRelatedTests",
+		"eslint --cache --fix",
+		"prettier --write"
+	],
+	"*.{css,scss}": [
+		"prettier --write"
+	],
+	"*.{html,md,json}": [
+		"prettier --write"
+	]
+}
