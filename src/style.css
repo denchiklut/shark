@@ -13,3 +13,22 @@
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%;
 }
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100dvw;
+	height: 100dvh;
+	display: grid;
+	place-content: center;
+}
+
+#root {
+	width: 800px;
+	height: 500px;
+	border: 1px solid black;
+}
