@@ -1,12 +1,12 @@
 import './style.css'
 import { Player } from './models/player'
-import { canvas, context } from './models/shared'
+import { canvas, context, CANVAS_HEIGHT, CANVAS_WIDTH } from './models/shared'
 import { Field } from './models/field'
 import { getAngle, getMousePos } from './utils'
 
 context.font = '50px Georgia'
-canvas.width = 800
-canvas.height = 500
+canvas.width = CANVAS_WIDTH
+canvas.height = CANVAS_HEIGHT
 
 const mouse = {
 	mouseDown: false
@@ -17,8 +17,8 @@ const field = new Field()
 
 const draw = () => {
 	context.clearRect(0, 0, canvas.width, canvas.height)
-	field.draw(player)
-	player.draw()
+	field.draw(context, player)
+	player.draw(context)
 	requestAnimationFrame(draw)
 }
 

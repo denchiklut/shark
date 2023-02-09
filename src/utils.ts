@@ -10,8 +10,9 @@ interface Props {
 	cursor: Point
 }
 
-export const dep = (item: number, dep: number) =>
-	item > -dep / 2 && item < dep / 2
+export const canMove = (playerPos: number, field: number, canvas: number) => {
+	return -playerPos < field - canvas && -playerPos > 0
+}
 
 export const getAngle = ({ point, cursor }: Props) => {
 	return Math.atan2(cursor.y - point.y, cursor.x - point.x)
