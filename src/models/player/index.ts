@@ -1,9 +1,4 @@
-import {
-	FIELD_HEIGHT,
-	FIELD_WIDTH,
-	CANVAS_HEIGHT,
-	CANVAS_WIDTH
-} from '../shared'
+import { View } from '../../core'
 import right from './assets/fish-swim-right.png'
 import left from './assets/fish-swim-left.png'
 import { canMove } from '../../utils'
@@ -14,10 +9,13 @@ playerLeft.src = left
 const playerRight = new Image()
 playerRight.src = right
 
-export class Player {
+export class Player extends View {
 	private angle = 0
 	private force = 3
-	public readonly position = { x: CANVAS_WIDTH / 2, y: CANVAS_HEIGHT / 2 }
+	public readonly position = {
+		x: this.canvas.width / 2,
+		y: this.canvas.height / 2
+	}
 	public gamePos = { x: 0, y: 0 }
 	private frameX = 0
 	private frameY = 0
@@ -25,16 +23,17 @@ export class Player {
 	private spriteHeight = 327
 
 	public draw = (context: CanvasRenderingContext2D) => {
+		const { canvas, gameField } = this
 		const velocityX = this.force * Math.cos(this.angle)
 		const velocityY = this.force * Math.sin(this.angle)
 		const dx = this.gamePos.x - velocityX
 		const dy = this.gamePos.y - velocityY
 
-		if (canMove(dx, FIELD_WIDTH, CANVAS_WIDTH)) {
+		if (canMove(dx, gameField.width, canvas.width)) {
 			this.gamePos.x -= velocityX
 		}
 
-		if (canMove(dy, FIELD_HEIGHT, CANVAS_HEIGHT)) {
+		if (canMove(dy, gameField.height, canvas.height)) {
 			this.gamePos.y -= velocityY
 		}
 

@@ -1,5 +1,3 @@
-import { canvas } from './models/shared'
-
 interface Point {
 	x: number
 	y: number
@@ -18,7 +16,7 @@ export const getAngle = ({ point, cursor }: Props) => {
 	return Math.atan2(cursor.y - point.y, cursor.x - point.x)
 }
 
-export const getMousePos = (evt: MouseEvent) => {
+export const getMousePos = (canvas: HTMLCanvasElement, evt: MouseEvent) => {
 	const rect = canvas.getBoundingClientRect()
 	const marginTop = Number(canvas.style.marginTop)
 

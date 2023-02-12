@@ -1,8 +1,9 @@
 import './style.css'
-import { Player } from './models/player'
-import { canvas, context, CANVAS_HEIGHT, CANVAS_WIDTH } from './models/shared'
-import { Field } from './models/field'
-import { getAngle, getMousePos } from './utils'
+import { Player, Field } from './models'
+import { getAngle, getMousePos, CANVAS_HEIGHT, CANVAS_WIDTH } from './utils'
+
+export const canvas = document.getElementById('root') as HTMLCanvasElement
+export const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
 context.font = '50px Georgia'
 canvas.width = CANVAS_WIDTH
@@ -27,7 +28,7 @@ draw()
 canvas.onmousemove = (event: MouseEvent) => {
 	if (mouse.mouseDown) {
 		const point = player.position
-		const cursor = getMousePos(event)
+		const cursor = getMousePos(canvas, event)
 		const ang = getAngle({ point, cursor })
 
 		player.changeAngle(ang)

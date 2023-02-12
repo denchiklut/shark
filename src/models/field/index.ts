@@ -1,28 +1,25 @@
-import {
-	CANVAS_HEIGHT,
-	CANVAS_WIDTH,
-	FIELD_HEIGHT,
-	FIELD_WIDTH
-} from '../shared'
+import { View } from '../../core'
 import { Player } from '../player'
 import field from './field.png'
 
 const img = new Image()
 img.src = field
 
-export class Field {
+export class Field extends View {
 	public draw = (context: CanvasRenderingContext2D, player: Player) => {
+		const { canvas, gameField } = this
+
 		context.save()
 		context.translate(
-			CANVAS_WIDTH / 2 - FIELD_WIDTH / 2,
-			CANVAS_HEIGHT / 2 - FIELD_HEIGHT / 2
+			canvas.width / 2 - gameField.width / 2,
+			canvas.height / 2 - gameField.height / 2
 		)
 		context.drawImage(
 			img,
 			player.gamePos.x,
 			player.gamePos.y,
-			FIELD_WIDTH,
-			FIELD_HEIGHT
+			gameField.width,
+			gameField.height
 		)
 		context.restore()
 	}
