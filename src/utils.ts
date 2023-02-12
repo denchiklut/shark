@@ -11,7 +11,7 @@ interface Props {
 }
 
 export const canMove = (playerPos: number, field: number, canvas: number) => {
-	return -playerPos < field - canvas && -playerPos > 0
+	return Math.abs(playerPos) < (field - canvas) / 2
 }
 
 export const getAngle = ({ point, cursor }: Props) => {
