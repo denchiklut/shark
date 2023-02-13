@@ -1,2 +1,2 @@
 export * from './settings.util'
-export * from './utils'
+export * from './game.util'

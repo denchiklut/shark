@@ -6,7 +6,7 @@ const img = new Image()
 img.src = field
 
 export class Field extends View {
-	public draw = (context: CanvasRenderingContext2D, player: Player) => {
+	public draw(context: CanvasRenderingContext2D, player: Player) {
 		const { canvas, gameField } = this
 
 		context.save()
